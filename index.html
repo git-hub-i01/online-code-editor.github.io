@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Online Code Editor — HTML/CSS/JS Live Preview</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="title">Online Code Editor</div>
+      <div class="hint">HTML / CSS / JS — Live Preview</div>
+      <div class="grow"></div>
+      <button id="runBtn" class="btn primary" title="Run (Ctrl+Enter)">Run</button>
+      <label class="switch btn toggle" title="Auto Run (Alt+R)">
+        <input id="autoRun" type="checkbox" /> Auto-Run
+      </label>
+      <button id="saveBtn" class="btn" title="Save (Ctrl+S)">Save</button>
+      <button id="loadBtn" class="btn" title="Load last save">Load</button>
+      <button id="shareBtn" class="btn" title="Share link">Share</button>
+      <button id="downloadBtn" class="btn" title="Download combined HTML">Download</button>
+      <button id="resetBtn" class="btn danger" title="Reset boilerplate">Reset</button>
+    </header>
+
+    <main>
+      <section class="left">
+        <div class="panel stack" id="editorPanel">
+          <div class="head">
+            <div class="label">Editors</div>
+            <div class="hint">Tips: <span class="kbd">Ctrl+Enter</span> Run • <span class="kbd">Alt+R</span> Auto • <span class="kbd">Ctrl+L</span> Clear Console</div>
+          </div>
+          <div class="tabs" id="tabs">
+            <button data-target="html" class="tab active">HTML</button>
+            <button data-target="css" class="tab">CSS</button>
+            <button data-target="js" class="tab">JS</button>
+          </div>
+          <div class="row">
+            <div class="panel pane active" data-name="html">
+              <div class="head"><div class="label">HTML</div></div>
+              <div class="editor"><textarea id="htmlEditor" placeholder="Enter your HTML code here..."></textarea></div>
+            </div>
+            <div class="panel pane" data-name="css">
+              <div class="head"><div class="label">CSS</div></div>
+              <div class="editor"><textarea id="cssEditor" placeholder="Enter your CSS code here..."></textarea></div>
+            </div>
+            <div class="panel pane" data-name="js">
+              <div class="head"><div class="label">JavaScript</div></div>
+              <div class="editor"><textarea id="jsEditor" placeholder="Enter your JavaScript code here..."></textarea></div>
+            </div>
+          </div>
+          <div class="foot">
+            <div class="hint">Note: This combines HTML + &lt;style&gt; + &lt;script&gt; into the preview document. For external libs, paste their CDN tags inside HTML.</div>
+            <div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="right">
+        <div class="panel preview">
+          <div class="head">
+            <div class="label">Preview</div>
+            <div>
+              <button id="clearConsoleBtn" class="btn" title="Clear console (Ctrl+L)">Clear Console</button>
+              <button id="darkBtn" class="btn" title="Toggle dark mode">Dark Mode</button>
+            </div>
+          </div>
+          <iframe id="frame" sandbox="allow-scripts allow-modals allow-forms allow-pointer-lock allow-same-origin" title="Code Preview"></iframe>
+        </div>
+        <div class="panel console">
+          <div class="head">
+            <div class="label">Console</div>
+            <div class="hint">Logs and errors from preview</div>
+          </div>
+          <div id="log" class="log" aria-live="polite"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
